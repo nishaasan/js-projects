@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="fromstyle.css" rel="stylesheet">
+</head>
+
+<body>
+  <div class="form-container">
+  <h2>Signup Form</h2> 
+  <form id="myForm">
+    <input type="text" id="name" placeholder="Enter your name" />
+    <input type="email" id="email" placeholder="Enter your email" />
+    <input type="password" id="password" placeholder="Enter password" />
+    <button type="submit">Submit</button>
+    <p id="errorMsg"></p>
+  </form>
+</div>
+
+</body>
+<script>
+  const form = document.getElementById("myForm");
+  const errorMsg = document.getElementById("errorMsg");
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault(); 
+
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const password = document.getElementById("password").value;
+
+    if (name === "") {
+      errorMsg.textContent = "Name is required.";
+    } else if (!email.includes("@") || !email.includes(".")) {
+      errorMsg.textContent = "Please enter a valid email.";
+    } else if (password.length < 6) {
+      errorMsg.textContent = "Password must be at least 6 characters.";
+    } else {
+      errorMsg.style.color = "green";
+      errorMsg.textContent = "Form submitted successfully!";
+    
+    form.submit(); 
+    }
+  });
+
+</script>
+
+</html>
